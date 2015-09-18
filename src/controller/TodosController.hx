@@ -82,6 +82,10 @@ class TodosController
         this.model.delete(id);
     }
 
+    public function edit(id:Int,text:String){
+        this.model.edit(id,text);
+    }
+
     public function setCompleted(id:Int,isCompleted:Bool){
         this.model.setCompleted(id,isCompleted);
     }

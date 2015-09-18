@@ -76,6 +76,14 @@ class TodosView
             delete(id);
         };
 
+        todoView.todoElement.labelElement.ondblclick = function(e:EventListener){
+            todoView.todoElement.labelElement.contentEditable = "true";
+        };
+
+        todoView.todoElement.labelElement.oninput = function(e:EventListener){
+            viewController.edit(id,todoView.todoElement.labelElement.textContent);
+        };
+
         todoView.todoElement.checkBoxElement.onclick = function(e:EventListener){
             viewController.setCompleted(id, !viewController.getCompleted(id));
             viewController.updateView();

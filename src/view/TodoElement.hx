@@ -16,7 +16,7 @@ class TodoElement
     public var listElement:Element = js.Browser.document.createElement('li');
     var divElement:Element =  js.Browser.document.createElement('div');
     public var checkBoxElement:InputElement = js.Browser.document.createInputElement();
-    var labelElement:LabelElement = js.Browser.document.createLabelElement();
+    public var labelElement:LabelElement = js.Browser.document.createLabelElement();
     public var buttonElement:ButtonElement = js.Browser.document.createButtonElement();
     public var inputElement:InputElement = js.Browser.document.createInputElement();
     /**
