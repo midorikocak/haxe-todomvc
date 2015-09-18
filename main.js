@@ -149,6 +149,9 @@ controller.TodosController.prototype = {
 	,'delete': function(id) {
 		this.model["delete"](id);
 	}
+	,edit: function(id,text) {
+		this.model.edit(id,text);
+	}
 	,setCompleted: function(id,isCompleted) {
 		this.model.setCompleted(id,isCompleted);
 	}
@@ -217,6 +220,10 @@ model.Todos.prototype = {
 	,'delete': function(id) {
 		var todo = this.getTodo(id);
 		this.list.remove(todo);
+	}
+	,edit: function(id,text) {
+		var todo = this.getTodo(id);
+		todo.set_title(text);
 	}
 	,setCompleted: function(id,isCompleted) {
 		var todo = this.getTodo(id);
@@ -379,7 +386,13 @@ view.TodosView.prototype = {
 		todoView.todoElement.buttonElement.onclick = function(e) {
 			_g["delete"](id);
 		};
-		todoView.todoElement.checkBoxElement.onclick = function(e1) {
+		todoView.todoElement.labelElement.ondblclick = function(e1) {
+			todoView.todoElement.labelElement.contentEditable = "true";
+		};
+		todoView.todoElement.labelElement.oninput = function(e2) {
+			_g.viewController.edit(id,todoView.todoElement.labelElement.textContent);
+		};
+		todoView.todoElement.checkBoxElement.onclick = function(e3) {
 			_g.viewController.setCompleted(id,!_g.viewController.getCompleted(id));
 			_g.viewController.updateView();
 		};
